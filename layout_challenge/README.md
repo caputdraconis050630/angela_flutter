@@ -1,16 +1,25 @@
-# layout_challenge
+# Angela's Flutter Lecture. Section6 Layout Challenge File
 
-A new Flutter project.
+> It will be a note which includes something I got from this chall
+> About main.dart
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+****
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## mainAxisAlignment
+Control alignment way. 
+> Row ==> Horizontal<br>
+> Column ==> Vertical
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![스크린샷 2021-07-21 오전 8 08 48](https://user-images.githubusercontent.com/60993104/126406442-6892c1f8-4dba-497b-ab86-83d5828e2c52.png)
+###### Description Criteria : Row 
+
+>> <strong>center</strong> : Align Center <br>
+>> <strong>start</strong> : Align left (starting point of row) <br>
+>> <strong>end</strong> : Align right (ending point of row)<br>
+>> <strong>spaceAround</strong> : Place half space of the rest of the child before and after the first and last child
+>> <strong>spaceBetween</strong> : Distribute all remaining space in the widget between start and end evenly. (Place child wideget at start and end)<br>
+>> <strong>spaceEvenly</strong> : Distribute all free space equally between child widget<br>
+
+
