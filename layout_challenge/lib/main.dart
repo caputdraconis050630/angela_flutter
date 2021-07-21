@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 
               ),
 
-              Center(
+              Container(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
               Container(
                   color: Colors.blue,
                   width: 100.0,
-                  margin: EdgeInsets.only(right: 0.0)
               ),
             ],
           ),
