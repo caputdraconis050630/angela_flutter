@@ -49,12 +49,15 @@ class QuizBrain{
     return questionNum;
   }
 
-  void increaseQuestionNum(){
-    if(questionNum + 1 == getQuestionLength()){
-      questionNum = 0;
-    }else{
-      questionNum ++ ;
+  void nextQuestion(){
+    if (questionNum < _questionBank.length -1){
+      questionNum ++;
     }
-
   }
+
+  void setQuestionNumToZero(){
+    questionNum = 0;
+  }
+
+
 }

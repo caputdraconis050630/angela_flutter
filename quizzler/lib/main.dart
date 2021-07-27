@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 
@@ -33,9 +34,47 @@ class QuizPage extends StatefulWidget {
 class _QuizPageState extends State<QuizPage> {
 
 
-  List<Icon> scoreKeeper = [
+  List<Icon> scoreKeeper = [];
 
-  ];
+
+  void checkAnswer(bool userPickedAnswer){
+    bool correctAnswer = quizBrain.getQuestionAnswer();
+    setState((){
+
+      if(quizBrain.getQuestionNum() < quizBrain.getQuestionLength() - 1) {
+        if (userPickedAnswer == correctAnswer) {
+          scoreKeeper.add(
+              Icon(Icons.check, color: Colors.green,)
+          );
+        } else {
+          scoreKeeper.add(
+              Icon(Icons.close, color: Colors.red,)
+          );
+        }
+        quizBrain.nextQuestion();
+      }else{
+        scoreKeeper = [];
+        Alert(
+          context: context,
+          type: AlertType.error,
+          title: "Game End",
+          desc: "This is the end of this game.",
+          buttons: [
+            DialogButton(
+              child: Text(
+                "OK",
+                style: TextStyle(color:Colors.white, fontSize:20),
+              ),
+              onPressed: ()=> Navigator.pop(context),
+              width: 120,
+            )
+          ],
+        ).show();
+
+        quizBrain.setQuestionNumToZero();
+      }
+    });
+  }
 
 
 
@@ -77,38 +116,12 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 //The user picked true.
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-
-                if(correctAnswer == true){
-                  print('user got it right!');
-                  setState(() {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-
-                      quizBrain.increaseQuestionNum();
-
-                  });
-                }else{
-                  print('user got it wrong');
-                  setState(() {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-
-                    quizBrain.increaseQuestionNum();
-
-                  });
-                }
+                checkAnswer(true);
 
 
-              },
+
+
+              }, // onPressed
             ),
           ),
         ),
@@ -127,34 +140,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                //The user picked false.
-                bool correctAnswer = quizBrain.getQuestionAnswer();
-
-                if(correctAnswer == false){
-                  print('user got it right!');
-                  setState(() {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-                      quizBrain.increaseQuestionNum();
-
-                  });
-                }else{
-                  print('user got it wrong');
-                  setState(() {
-                    scoreKeeper.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-                    quizBrain.increaseQuestionNum();
-
-                  });
-                }
+                checkAnswer(false);
               },
             ),
           ),
